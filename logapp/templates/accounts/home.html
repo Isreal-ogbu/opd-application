@@ -1,0 +1,15 @@
+{%  extends "base.html" %}
+
+{% block content %}
+{% if user.is_authenthicated %}
+    <h2>USERNAME : {{ user.username }}</h2>
+{% else %}
+<div>
+    <h1>Welcome to the homepage</h1>
+    <p> You can only be seeing this page because you signed in</p>
+    <p></p>
+    <p>I am skilled python Django developer</p>
+</div>
+<h4><a href="{% url 'logout' %}">logout</a></h4>
+{% endif %}
+{% endblock content %}

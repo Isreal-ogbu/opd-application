@@ -1,0 +1,23 @@
+{%  extends "base.html" %}
+
+{% block content %}
+{% if user.is_authenthicated %}
+    <h2>USERNAME : {{ user.username }}</h2>
+{% else %}
+<div>
+    <h4>This means you signed up successfully</h4>
+    <p>This are you registration details below</p>
+    <div>
+        {% if user.is_authenticated %}
+            <li><a><strong>{{ user.username }}</strong></a></li>
+            <li><a><strong>{{ user.first_name }}</strong></a></li>
+            <li><a><strong>{{ user.last_name }}</strong></a></li>
+            <li><a><strong>{{ user.email }}</strong></a></li>
+            <img src="{{ user.profile_image }}" alt="">
+        {% endif %} <br>
+        <p>Go to the <a href="{% url 'Home' %}">Home</a> page</p>
+        <p>Wnt to logout?<a href="{% url 'logout' %}">logout</a></p>
+    </div>
+</div>
+{% endif %}
+{% endblock content %}

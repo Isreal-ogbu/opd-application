@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Certificate</title>
+        <link rel="stylesheet" type="type/css" href="{% static '/css/cert.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <style>
+            body, html {
+  margin: 0;
+  padding: 0;
+}
+body {
+  color: black;
+  display: table;
+  font-family: Georgia, serif;
+  font-size: 24px;
+  text-align: center;
+}
+.container {
+  border: 20px solid tan;
+  width: 750px;
+  height: 563px;
+  display: table-cell;
+  vertical-align: middle;
+}
+#company {
+  color: tan;
+}
+
+.marquee {
+  color: tan;
+  font-size: 48px;
+  margin: 20px;
+}
+#assignment {
+  margin: 20px;
+}
+#person {
+  border-bottom: 2px solid black;
+  font-size: 32px;
+  font-style: italic;
+  margin: 20px auto;
+  width: 400px;
+}
+#reason {
+  margin: 20px;
+}
+        </style>
+    </head>
+    <body>
+        <div class="conatiner">
+            <form class="row g-3 needs-validation" action="{% url 'certificate' %}" method="post" novalidate>
+                {% csrf_token %}
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text">Company Name</span>
+                    <input type="text" class="form-control" id="inputGroup-sizing-sm" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Issuer's Name</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Reciever's Name</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Reason</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-primary" id="download-btn" type="submit">Submit now</button>
+                </div>
+            </form>
+        </div>
+        <div class="container">
+            {% for details in form %}
+            <div id="company">
+                
+            </div>
+
+            <div id="marquee">
+                
+            </div>
+
+            <div id="assignment">
+                {{ details.company_name }}
+            </div>
+
+            <div id="person">
+                {{ details.reciever_name }}
+            </div>
+
+            <div id="reason">
+                {{ details.reason }}
+            </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>
